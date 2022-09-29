@@ -10,6 +10,7 @@ class TodoList extends Component {
     this.displayTodos = this.displayTodos.bind(this);
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
+    this.updateTodo = this.updateTodo.bind(this);
   }
 
   addTodo(todo) {
@@ -20,9 +21,19 @@ class TodoList extends Component {
     this.setState(st => ({ todos: st.todos.filter(t => t.id !== id) }));
   }
 
+  updateTodo(id, newData) {
+    const newTodos = this.state.todos.map(todo => {
+      if (todo.id === id) {
+        return { ...todo, data: newData };
+      }
+      return todo;
+    });
+    this.setState({ todos: newTodos });
+  }
+
   displayTodos() {
     return this.state.todos.map(todo => (
-      <Todo key={todo.id} todo={todo} removeTodo={this.removeTodo} />
+      <Todo key={todo.id} todo={todo} removeTodo={this.removeTodo} updateTodo={this.updateTodo} />
     ));
   }
 
