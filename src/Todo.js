@@ -43,32 +43,33 @@ class Todo extends Component {
     let body;
     if (this.state.isEditing) {
       body = (
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' name='data' value={this.state.data} onChange={this.handleChange} />
-          <button type='submit'>Save</button>
-        </form>
+        <div className='Todo'>
+          <form className='Todo-edit-form' onSubmit={this.handleSubmit}>
+            <input type='text' name='data' value={this.state.data} onChange={this.handleChange} />
+            <button type='submit'>Save</button>
+          </form>
+        </div>
       );
     } else {
       body = (
-        <div>
-          <button
-            className={`${this.state.isCompleted && 'Todo-Data'}`}
-            type='button'
+        <div className='Todo'>
+          <li
+            className={this.state.isCompleted ? 'Todo-data completed' : 'Todo-data'}
             onClick={this.hanldeToggle}>
             {todo.data}
-          </button>
-          <div className='Todo-Buttons'>
-            <button type='button' onClick={this.handleUpdate}>
-              ed
+          </li>
+          <div className='Todo-buttons'>
+            <button onClick={this.handleUpdate}>
+              <i className='fas fa-pen' />
             </button>
-            <button type='button' onClick={this.handleRemoveTodo}>
-              del
+            <button onClick={this.handleRemoveTodo}>
+              <i className='fas fa-trash' />
             </button>
           </div>
         </div>
       );
     }
-    return <div className='Todo'>{body}</div>;
+    return body;
   }
 }
 
