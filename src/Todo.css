@@ -4,3 +4,7 @@
   align-items: center;
   justify-content: flex-start;
 }
+
+.Todo-Data {
+  text-decoration: line-through;
+}

@@ -6,12 +6,14 @@ class Todo extends Component {
     super(props);
     this.state = {
       isEditing: false,
-      data: this.props.todo.data
+      data: this.props.todo.data,
+      isCompleted: false
     };
     this.handleRemoveTodo = this.handleRemoveTodo.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.hanldeToggle = this.hanldeToggle.bind(this);
   }
 
   handleSubmit(evt) {
@@ -32,6 +34,10 @@ class Todo extends Component {
     this.setState(st => ({ isEditing: !st.isEditing }));
   }
 
+  hanldeToggle() {
+    this.setState(st => ({ isCompleted: !st.isCompleted }));
+  }
+
   render() {
     const { todo } = this.props;
     let body;
@@ -45,7 +51,12 @@ class Todo extends Component {
     } else {
       body = (
         <div>
-          <p>{todo.data}</p>
+          <button
+            className={`${this.state.isCompleted && 'Todo-Data'}`}
+            type='button'
+            onClick={this.hanldeToggle}>
+            {todo.data}
+          </button>
           <div className='Todo-Buttons'>
             <button type='button' onClick={this.handleUpdate}>
               ed
