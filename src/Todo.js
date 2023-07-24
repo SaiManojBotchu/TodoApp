@@ -31,11 +31,11 @@ class Todo extends Component {
   }
 
   handleUpdate() {
-    this.setState(st => ({ isEditing: !st.isEditing }));
+    this.setState((st) => ({ isEditing: !st.isEditing }));
   }
 
   hanldeToggle() {
-    this.setState(st => ({ isCompleted: !st.isCompleted }));
+    this.setState((st) => ({ isCompleted: !st.isCompleted }));
   }
 
   render() {
@@ -45,7 +45,13 @@ class Todo extends Component {
       body = (
         <div className='Todo'>
           <form className='Todo-edit-form' onSubmit={this.handleSubmit}>
-            <input type='text' name='data' value={this.state.data} onChange={this.handleChange} />
+            <input
+              type='text'
+              name='data'
+              value={this.state.data}
+              onChange={this.handleChange}
+              autoComplete='off'
+            />
             <button type='submit'>Save</button>
           </form>
         </div>

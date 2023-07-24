@@ -12,9 +12,11 @@ class TodoForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    const newTodo = { ...this.state, id: uuid() };
-    this.props.addTodo(newTodo);
-    this.setState({ data: '' });
+    if (this.state.data) {
+      const newTodo = { ...this.state, id: uuid() };
+      this.props.addTodo(newTodo);
+      this.setState({ data: '' });
+    }
   }
 
   handleChange(evt) {
@@ -33,6 +35,7 @@ class TodoForm extends Component {
           placeholder='New Todo'
           value={this.state.data}
           onChange={this.handleChange}
+          autoComplete='off'
         />
         <button type='submit'>ADD TODO</button>
       </form>

@@ -12,6 +12,7 @@
 }
 
 .Todo-data {
+  cursor: pointer;
   position: relative;
   list-style: none;
   transition: opacity 0.4s linear;
@@ -47,6 +48,7 @@
   font-size: 1em;
   margin: 0.4em;
   background: none;
+  appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
   color: #fff;

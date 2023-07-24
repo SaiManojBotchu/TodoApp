@@ -10,3 +10,10 @@ function App() {
 }
 
 export default App;
+
+/* APP STRUCTURE
+-- TodoList
+  -- {Heading}
+  -- Todo
+  -- TodoForm
+*/

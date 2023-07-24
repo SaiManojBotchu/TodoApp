@@ -14,15 +14,15 @@ class TodoList extends Component {
   }
 
   addTodo(todo) {
-    this.setState(st => ({ todos: [...st.todos, todo] }));
+    this.setState((st) => ({ todos: [...st.todos, todo] }));
   }
 
   removeTodo(id) {
-    this.setState(st => ({ todos: st.todos.filter(t => t.id !== id) }));
+    this.setState((st) => ({ todos: st.todos.filter((t) => t.id !== id) }));
   }
 
   updateTodo(id, newData) {
-    const newTodos = this.state.todos.map(todo => {
+    const newTodos = this.state.todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, data: newData };
       }
@@ -32,8 +32,13 @@ class TodoList extends Component {
   }
 
   displayTodos() {
-    return this.state.todos.map(todo => (
-      <Todo key={todo.id} todo={todo} removeTodo={this.removeTodo} updateTodo={this.updateTodo} />
+    return this.state.todos.map((todo) => (
+      <Todo
+        key={todo.id}
+        todo={todo}
+        removeTodo={this.removeTodo}
+        updateTodo={this.updateTodo}
+      />
     ));
   }
 
